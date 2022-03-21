@@ -1,4 +1,4 @@
-import { getBooks } from '@/services/apis/books';
+import { getBooks, getBook } from '@/services/apis/books';
 
 export default {
   namespaced: true,
@@ -7,17 +7,25 @@ export default {
     books: [],
   },
   mutations: {
+    SET_BOOK(state, payload) {
+      state.book = payload;
+    },
     SET_BOOKS(state, payload) {
       state.books = payload;
     }
   },
   actions: {
     async fetchBooks({ commit }, {
+      query,
       page,
       perPage,
     }) {
-      const response = await getBooks(undefined, page - 1, perPage);
+      const response = await getBooks(query, page - 1, perPage);
       commit('SET_BOOKS', response.data.items);
     },
+    async fetchBook({ commit }, payload) {
+      const response = await getBook(payload);
+      commit('SET_BOOK', response.data);
+    }
   },
 };

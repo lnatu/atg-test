@@ -5,7 +5,7 @@
         router-link.pagination-link(
           exact
           active-class="active"
-          :to="{ name: 'BooksPage', query: { page: s, limit: 8 } }"
+          :to="path(s)"
         ) {{ s }}
 </template>
 
@@ -17,6 +17,20 @@ export default {
       type: Number,
       required: true,
     },
+  },
+  setup(_, { root }) {
+    const path = page => ({
+      name: 'BooksPage',
+      query: {
+        page,
+        limit: 8,
+        search: root.$route.query.search || 'Stephen King novels',
+      },
+    });
+
+    return {
+      path,
+    };
   },
 };
 </script>

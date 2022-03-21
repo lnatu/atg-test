@@ -13,6 +13,11 @@ const routes = [
     name: 'BooksPage',
     component: () => import('@/views/pages/books/Books'),
   },
+  {
+    path: '/book/:id',
+    name: 'BookPage',
+    component: () => import('@/views/pages/books/Book'),
+  },
 ];
 
 const router = new VueRouter({

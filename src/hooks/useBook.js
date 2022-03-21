@@ -7,20 +7,25 @@ const {
 } = createNamespacedHelpers('books');
 
 export default function () {
-  const { fetchBooks } = useActions(['fetchBooks']);
+  const {
+    fetchBooks,
+    fetchBook
+  } = useActions(['fetchBooks', 'fetchBook']);
 
   const { SET_BOOKS } = useMutations(['SET_BOOKS']);
 
-  const { books } = useState(['books']);
+  const { book, books } = useState(['book', 'books']);
 
   return {
     // state
+    book,
     books,
 
     // mutations
     SET_BOOKS,
 
     // actions
+    fetchBook,
     fetchBooks,
   };
 }

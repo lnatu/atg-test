@@ -1,7 +1,12 @@
 <template lang="pug">
   section.books
     .container
-      .books-title Stephen King novels
+      .books-top
+        .books-title Stephen King novels
+
+        filter-book
+
+        input.input(placeholder='Search' v-model="query" @keydown.enter="searchBooks")
 
       .books-grid
         .loading(v-if="loading" :key="1")
@@ -10,7 +15,7 @@
         div(v-else :key="2")
           book-list(:books="books")
 
-        pagination(:size="totalPage")
+        pagination(:size="totalPage" v-if="books.length < 40")
 </template>
 
 <script>
@@ -21,15 +26,18 @@ import useBook from '@/hooks/useBook';
 
 // Components
 import BookList from '@/views/pages/books/components/BookList.vue';
+import FilterBook from '@/views/pages/books/components/Filter.vue';
 import Pagination from '@/views/pages/books/components/Pagination.vue';
 
 export default {
   name: 'Books',
   components: {
     BookList,
+    FilterBook,
     Pagination,
   },
   setup() {
+    const query = ref('');
     const loading = ref(false);
     const limit = ref(40);
     const perPage = ref(8);
@@ -42,6 +50,7 @@ export default {
 
     return {
       // data
+      query,
       books,
       loading,
       totalPage,
@@ -57,24 +66,43 @@ export default {
     async getBooks(queryParams) {
       let limit;
       let page;
+      let query;
 
       if (queryParams) {
         limit = +queryParams.query.limit;
         page = +queryParams.query.page;
+        query = queryParams.query.search;
       } else {
         limit = +this.$route.query.limit;
         page = +this.$route.query.page;
+        query = this.$route.query.search;
       }
 
 
       this.loading = true;
 
-      await this.fetchBooks({
-        page: page || 0,
-        perPage: limit || 8,
-      });
+      try {
+        await this.fetchBooks({
+          query: query || 'Stephen King novels',
+          page: page || 1,
+          perPage: limit || 8,
+        });
+        this.loading = false;
+      } catch (err) {
+        this.loading = false;
+      }
 
       this.loading = false;
+    },
+    searchBooks() {
+      this.$router.push({
+        name: 'BooksPage',
+        query: {
+          search: this.query,
+          page: 1,
+          perPage: 8,
+        },
+      });
     },
   },
   watch: {
