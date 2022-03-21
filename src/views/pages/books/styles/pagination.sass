@@ -1,0 +1,30 @@
+.pagination
+  margin-top: 3rem
+
+  &-list
+    display: flex
+    flex-wrap: wrap
+
+  &-item + &-item
+    margin-left: 1.5rem
+
+  &-link
+    display: block
+    padding: 1rem
+    color: #fff
+    border-radius: 4px
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+    line-height: 1
+    min-width: 30px
+    text-align: center
+    background: #DAA4FF
+
+    transition: all .3s
+
+    &:not(.active)
+      background-color: #F9FAFE
+      color: #333
+
+    &:hover
+      background-color: #DAA4FF
+      color: #fff

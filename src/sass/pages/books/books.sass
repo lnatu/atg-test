@@ -1,0 +1,59 @@
+.books
+  margin-top: 5rem
+  margin-bottom: 10rem
+
+  &-title
+    font-size: 4rem
+
+    @media only screen and (max-width: 576px)
+      font-size: 2rem
+
+  &-grid
+    margin-top: 3rem
+
+    @media only screen and (max-width: 576px)
+      margin-top: 2rem
+
+
+.book
+  &-card
+    height: 100%
+    background-color: #fff
+    padding: 2rem
+    border-radius: 8px
+    box-shadow: rgba(149, 157, 165, 0.2) 0 .8rem 2.4rem
+
+    &__cover
+
+      img
+        max-width: 100%
+        width: 100%
+        height: 400px
+        object-fit: contain
+
+    &__thumb
+      display: flex
+      align-items: center
+      border: 1px solid #eee
+      border-radius: 4px
+      overflow: hidden
+      background-image: linear-gradient(to right bottom, #daa4ff, #b484e8, #8d67d2, #624bbd, #2a32a8)
+
+    &__caption
+      margin-top: 2rem
+      font-size: 1.5rem
+      line-height: 2rem
+      font-weight: 500
+
+.list-enter-active,
+.list-leave-active
+  transition: all 0.5s ease
+
+.list-enter-from,
+.list-leave-to
+  opacity: 0
+  transform: translateY(-10rem)
+
+
+.loading
+  text-align: center

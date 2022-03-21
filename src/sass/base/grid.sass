@@ -1,0 +1,33 @@
+.container
+  max-width: 1400px
+
+  margin-left: auto
+  margin-right: auto
+
+  padding-left: 15px
+  padding-right: 15px
+
+.row
+  display: flex
+  flex-wrap: wrap
+  margin-left: -15px
+  margin-right: -15px
+
+[class^=col-]
+  padding: 15px
+
+@for $i from 1 through 12
+  .col-#{$i}
+    flex: 0 0 $i / 12 *100%
+
+@media only screen and (max-width: 62em)
+  @for $i from 1 through 12
+    .col-lg-#{$i}
+      flex: 0 0 $i / 12 *100%
+
+
+@media only screen and (max-width: 48em)
+  @for $i from 1 through 12
+    .col-md-#{$i}
+      flex: 0 0 $i / 12 *100%
+
