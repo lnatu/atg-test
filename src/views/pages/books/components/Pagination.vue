@@ -5,6 +5,7 @@
         router-link.pagination-link(
           exact
           active-class="active"
+          :class='{active: s === +$route.query.page}'
           :to="path(s)"
         ) {{ s }}
 </template>

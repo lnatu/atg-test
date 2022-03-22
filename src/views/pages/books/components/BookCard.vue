@@ -15,7 +15,7 @@ import Rating from '@/views/pages/books/components/Rating.vue';
 export default {
   name: 'BookCard',
   components: {
-    Rating
+    Rating,
   },
   props: {
     bookName: {

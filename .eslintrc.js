@@ -13,5 +13,6 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
-  }
-}
+  },
+  ignorePatterns: ['**/tests/unit/*.js'],
+};

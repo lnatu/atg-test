@@ -9,7 +9,7 @@ const {
 export default function () {
   const {
     fetchBooks,
-    fetchBook
+    fetchBook,
   } = useActions(['fetchBooks', 'fetchBook']);
 
   const { SET_BOOKS } = useMutations(['SET_BOOKS']);

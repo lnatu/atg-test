@@ -5,10 +5,10 @@
       button.btn(@click="handlerSortBooks") Published date
       button.btn(@click="handlerSortBooksByRating") Rating
       button.btn(
-        @click="void $router.push({ name: 'BooksPage', query: { page: 1, limit: 40 } })"
+        @click="clearFilter(true)"
       ) Show all
       button.btn(
-        @click="void $router.push({ name: 'BooksPage', query: { page: 1, limit: 8 } })"
+        @click="clearFilter(false)"
       ) Clear filter
 </template>
 
@@ -38,6 +38,21 @@ export default {
     handlerSortBooksByRating() {
       const results = sortBookByRating([...this.books]);
       this.SET_BOOKS(results);
+    },
+    clearFilter(reset) {
+      const search = this.$route.query.search || 'Stephen king novels';
+      let limit = 8;
+
+      if (reset) limit = 40;
+
+      this.$router.push({
+        name: 'BooksPage',
+        query: {
+          search,
+          page: 1,
+          limit,
+        },
+      });
     },
   },
 };

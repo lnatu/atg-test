@@ -12,7 +12,7 @@ export default {
     },
     SET_BOOKS(state, payload) {
       state.books = payload;
-    }
+    },
   },
   actions: {
     async fetchBooks({ commit }, {
@@ -26,6 +26,6 @@ export default {
     async fetchBook({ commit }, payload) {
       const response = await getBook(payload);
       commit('SET_BOOK', response.data);
-    }
+    },
   },
 };

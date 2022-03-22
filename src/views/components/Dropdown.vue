@@ -15,9 +15,9 @@ export default {
     const state = ref(false);
 
     return {
-      state
+      state,
     };
-  }
+  },
 };
 </script>
 

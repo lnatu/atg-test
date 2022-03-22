@@ -78,7 +78,6 @@ export default {
         query = this.$route.query.search;
       }
 
-
       this.loading = true;
 
       try {
@@ -91,8 +90,6 @@ export default {
       } catch (err) {
         this.loading = false;
       }
-
-      this.loading = false;
     },
     searchBooks() {
       this.$router.push({
