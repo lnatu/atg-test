@@ -5,7 +5,9 @@
         img(src="@/assets/logo.svg" width="300px")
 
       .cta
-        router-link(:to="{ name: 'BooksPage', query: { page: 1, limit: 8 } }") Visit Books page
+        router-link(
+          :to="{ name: 'BooksPage', query: { page: 1, limit: 8, search: 'Stephen King novels' } }"
+        ) Visit Books page
 </template>
 
 <script>

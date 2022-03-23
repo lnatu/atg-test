@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@vue/composition-api": "^1.4.9",
@@ -18,16 +18,28 @@
     "vuex-composition-helpers": "^1.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.10",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@vue/babel-preset-app": "^5.0.3",
+    "@vue/cli-plugin-babel": "^5.0.3",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "^3.0.0-rc.10",
+    "@vue/compiler-sfc": "^3.2.31",
     "@vue/eslint-config-airbnb": "^3.0.0-rc.10",
+    "@vue/test-utils": "^1.1.3",
+    "@vue/vue2-jest": "^27.0.0-alpha.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.0.5",
+    "jest-transform-stub": "^2.0.0",
     "node-sass": "^7.0.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "sass-loader": "7.0.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.2",
+    "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.5.16"
   }
 }

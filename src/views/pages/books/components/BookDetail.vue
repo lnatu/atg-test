@@ -15,7 +15,7 @@
         span Language:
         span {{ info.language }}
 
-      .book-detail__info
+      .book-detail__info(v-if="info.dimensions")
         span Dimensions:
         div - Height - {{ info.dimensions.height || 'NA' }}
         div - Width - {{ info.dimensions.width || 'NA' }}

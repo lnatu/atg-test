@@ -2,7 +2,7 @@
   section.books
     .container
       .books-top
-        .books-title Stephen King novels
+        .books-title Welcome to my Book Store
 
         filter-book
 
@@ -13,9 +13,13 @@
           img(src='@/assets/loading.gif')
 
         div(v-else :key="2")
+
+          div(v-if="$route.query.search") {{ $route.query.search }}
+          .mt-1(v-if="books.length === 0") Can't find any documents 😂😂😂
+
           book-list(:books="books")
 
-        pagination(:size="totalPage" v-if="books.length < 40")
+        pagination(:size="totalPage" v-if="books.length < 40 && books.length !== 0")
 </template>
 
 <script>
@@ -100,6 +104,8 @@ export default {
           perPage: 8,
         },
       });
+
+      this.query = '';
     },
   },
   watch: {
